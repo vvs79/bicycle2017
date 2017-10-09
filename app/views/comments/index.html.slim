@@ -1,0 +1,28 @@
+table.table.table-bordered.table-hover
+  tr.active
+    th
+      h4 New name
+    th
+      h4 New description
+    th
+      h4 Bike name
+    th
+      h4 Bike description
+    th
+      h4 Change
+  - @comments.each do |comment|
+    tr
+      td 
+        = link_to edit_bike_path(comment.bike_id), title: 'Go to edit bike'
+          = comment.name
+      td 
+        = link_to edit_bike_path(comment.bike_id), title: 'Go to edit bike'
+          = comment.description
+      td 
+        = link_to edit_bike_path(comment.bike_id), title: 'Go to edit bike'
+          = comment.bike.name
+      td 
+        = link_to edit_bike_path(comment.bike_id), title: 'Go to edit bike'
+          = comment.bike.description
+      td 
+        = link_to "Change", edit_bike_path(comment.bike_id), title: 'Go to edit bike', class: 'btn btn-default'

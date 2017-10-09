@@ -1,0 +1,15 @@
+.form-group.col-md-8.col-md-offset-2
+  = form_for bike, html: { multipart: true } do |f|
+    = render 'shared/error_messages', object: f.object
+    = f.label :name, "Name"
+    = f.text_field :name, placeholder: "Name", class: 'form-control'
+    = f.label :description, "Description"
+    = f.text_area :description, placeholder: "Description", rows: 5, class: 'form-control'
+    = f.hidden_field :user_id
+    = f.hidden_field :used_bike
+    br
+    = f.select(:category_id, options_from_collection_for_select(::Category.all, :id, :name), {prompt: 'Select a category'}, {class: 'form-control'})
+    p
+      = f.label :images, 'Image'
+      = f.file_field :images, multiple: true
+    = f.submit yield(:button_text), class: "btn btn-md btn-success col-md-4 col-md-offset-4"

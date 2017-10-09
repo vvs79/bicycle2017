@@ -1,0 +1,35 @@
+- provide(:title, 'Update profile')
+.container.content-area
+  h2.center.col-md-4.col-md-offset-4
+    | Update profile
+  .col-md-12.margin-20
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .margin-20
+        = devise_error_messages!
+      .center.col-md-4.col-md-offset-4
+        .field
+          = f.label :email
+          br
+          = f.email_field :email, autofocus: true, class: 'form-control'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            | Currently waiting confirmation for: 
+            = resource.unconfirmed_email
+        .field
+          = f.label :password
+          i
+            | (leave blank if you don't want to change it)
+          br
+          = f.password_field :password, autocomplete: "off", :placeholder => "Password (6 characters minimum)", class: "form-control"
+        .field
+          = f.label :password_confirmation
+          br
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+        .field
+          = f.label :current_password
+          i
+            | (we need your current password to confirm your changes)
+          br
+          = f.password_field :current_password, autocomplete: "off", class: 'form-control'
+        .actions
+          = f.submit "Update", class: "btn btn-lg btn-primary col-md-4 col-md-offset-4"

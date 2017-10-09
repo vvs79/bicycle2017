@@ -1,0 +1,108 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  overflow-x: hidden;
+  background: antiquewhite;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 700;
+}
+
+.content-body {
+    margin-top: 70px;
+}
+nav.navbar.navbar-default.navbar-fixed-top.topnav {
+  background: #B4B4D6;
+}
+
+footer.navbar-default.container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background: #B4B4D6;
+  display: none;
+}
+
+.navbar-default {
+  .navbar-brand, .navbar-nav > li > a {
+  color: black;
+    &:hover{
+      color: green;
+    }
+  }
+}
+
+.col-lg-12 ul.list-inline {
+  margin-bottom: 0;
+}
+
+form.new_bike label,
+form.new_bike input[type="submit"] {
+  margin-top: 20px;
+}
+
+h1, h2,
+.center {  
+  text-align: center;
+}
+
+.all-bikes {
+  background: azure;
+  padding: 20px 0;
+  margin: 0 20px 20px;
+  width: 285px;
+}
+
+.all-bikes .text-center span {
+  margin: 0 5px;
+}
+
+#new_user #user_password {
+  margin: 15px 0;
+}
+
+#user_password_confirmation {
+  margin-bottom: 20px;
+}
+
+a[title="Cancel approve"],
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+form.edit_bike input[type="submit"],
+form.new_comment input[type="submit"],
+form#edit_user div div.field,
+form#edit_user div div.actions {
+  margin-top: 20px;
+}
+
+ul.categories li {
+  width: 100px;
+}

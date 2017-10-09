@@ -1,0 +1,50 @@
+table.table.table-bordered.table-hover
+  tr.active
+    th
+      h4 Id
+    th
+      h4 Name
+    th
+      h4 Description
+    th
+      h4 User_id
+    th
+      h4 Used_bike
+    th
+      h4 Category_id
+  - @bikes.each do |bike|
+    tr
+      td 
+        | #{bike.id}
+      td 
+        | #{bike.name}
+      td 
+        | #{bike.description}
+      td 
+        | #{bike.user_id}
+      td 
+        | #{bike.used_bike}
+      td 
+        | #{bike.category_id}
+br
+br
+table.table.table-bordered.table-hover
+  tr.active
+    th
+      h4 Id
+    th
+      h4 Name
+    th
+      h4 Description
+    th
+      h4 Bike_id
+  - @comments.each do |comment|
+    tr
+      td 
+        | #{comment.id}
+      td 
+        | #{comment.name}
+      td 
+        | #{comment.description}
+      td 
+        | #{comment.bike_id}

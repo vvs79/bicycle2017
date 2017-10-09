@@ -1,0 +1,26 @@
+- provide(:title, 'New data')
+- provide(:button_text, 'Change')
+.container.content-area
+  h2.center
+    | Name: #{@bike.name}
+  .center
+    = image_tag @image, height: '400'
+  br
+  .center
+    | Description: #{@bike.description}
+  h1.center
+    | New data
+  .form-group.col-md-8.col-md-offset-2.center
+    = form_for @bike, html: { multipart: true } do |f|
+      = render 'shared/error_messages', object: f.object
+      = f.label :name, "Name"
+      = f.text_field :name, placeholder: "Name", class: 'form-control', value: @bike.comment.name
+      = f.label :description, "Description"
+      = f.text_area :description, placeholder: "Description", rows: 5, class: 'form-control', value: @bike.comment.description
+      = f.hidden_field :user_id
+      = f.hidden_field :used_bike
+      = f.hidden_field :images
+      = f.hidden_field :category_id
+      = f.submit yield(:button_text), class: "btn btn-md btn-success col-md-4 col-md-offset-4"
+  .center
+    = link_to 'Cancel', comment_path(@bike.comment.id), method: :delete, rel: 'tooltip', title: 'Cancel comment', class: 'btn btn-danger col-md-2 col-md-offset-5 margin-bottom-20'

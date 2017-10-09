@@ -1,0 +1,17 @@
+- provide(:title, 'Show')
+.container.content-area
+  br
+  .row
+    = render 'layouts/messages'  
+  h2.center
+    | Name: #{@bike.name}
+  .center
+    = image_tag @image, height: '400'
+  br
+  .center
+    - @bike.images.each do |image|
+      span
+        = link_to(select_image_bike_path(@bike, image_param: image)) do
+          = image_tag image, width: '120px', height: '100px'
+  .center
+    | Description: #{@bike.description}

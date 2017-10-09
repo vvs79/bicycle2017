@@ -1,0 +1,31 @@
+- if @bikes.count === 0
+  | There are no bicycles 
+- @bikes.each do |bike|
+  .col-md-3.col-sm-6.col-xs-12.all-bikes
+    = link_to bike_path(bike)
+      .center
+        - if bike.images.count > 0
+          = image_tag bike.images[0].url, width: '200', height: '200'
+        - else 
+          = image_tag 'http://i.piccy.info/i9/3880e13ce4a1fe024c880a9cdd712a2d/1507479121/15242/1185977/default_img.jpg', width: '200', height: '200'
+    = link_to bike_path(bike)
+      p.text-center
+        | #{bike.name.truncate(20)}
+    .text-center
+      span
+        = link_to 'Show', bike_path(bike), rel: 'tooltip', title: 'Show bike', class: 'btn btn-primary'
+      - if (user_signed_in?)
+        - if (bike.comment)
+          - if (current_user.id == bike.user_id)
+            span
+              = link_to 'Check', edit_bike_path(bike), rel: 'tooltip', title: 'Edit bike', class: 'btn btn-default'
+          - else
+            | Is edited
+        - else
+          span
+            = link_to 'Edit', new_comment_path(id: bike.id, name: bike.name, description: bike.description), rel: 'tooltip', title: 'Edit bike', class: 'btn btn-warning'
+        span
+          = link_to 'Used', not_use_bike_path(bike), rel: 'tooltip', title: 'Not use bike', class: 'btn btn-default'  
+      - if (user_signed_in? && current_user.id == bike.user_id)
+        span
+          = link_to 'Del', bike_path(bike), method: :delete, data: { confirm: "Are you sure?" }, rel: 'tooltip', title: 'Delete bike', class: 'btn btn-danger'

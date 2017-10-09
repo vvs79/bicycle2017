@@ -1,0 +1,16 @@
+- provide(:title, 'All bikes')
+.container.content-area
+  br
+  .row
+    = render 'layouts/messages'
+  = form_tag bikes_path, method: :get do  
+    p
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", name: nil
+    br
+    = render 'bikes'
+    - if @bikes.count > 6
+      br
+      .col-sm-12
+        .center
+          = will_paginate

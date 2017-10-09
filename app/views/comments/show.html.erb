@@ -1,0 +1,13 @@
+<%- provide(:title, 'Show') %>
+<div class="container content-area">
+  <br/>
+  <div clas="row">
+    <%= render 'layouts/messages' %>
+  </div>  
+  <h2 class="center">
+    Name: <%= @comment.name %>
+  </h2>
+  <br/>
+  <h2 class="center">
+    Description: <%= @comment.description %>
+  </h2>
