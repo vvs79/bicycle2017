@@ -15,9 +15,6 @@ class BikesController < ApplicationController
     @bikes = (user_signed_in?) ? @bikes.used_bikes(current_user.id) : @bikes
     @bikes = @bikes.search_name(params[:search]) if params[:search]
     @bikes = current_user.bikes if params[:my_bikes]
-    # if params[:check_my_bikes]
-    @bikes = current_user.bikes.map {|bike| delete(bike) if !bike.comment} if params[:check_my_bikes]
-    # @bikes.index_by(&:id) if @bikes.kind_of?(Array)
     @bikes = @bikes.paginate(page: params[:page] || 1, per_page: 6).order(updated_at: :desc)
   end
 

@@ -24,6 +24,8 @@ class CommentsController < ApplicationController
   def create
      @comment = Comment.new(comment_params)
     if @comment.save
+      bike = Bike.find(@comment.bike_id)
+      BikesMailer.bike_edit(bike, bike.user).deliver_now
       redirect_to bikes_path
     else
       render 'new'
